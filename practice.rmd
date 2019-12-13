@@ -53,6 +53,10 @@ library(lubridate)
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
+# Preamble
+
+[Link to Tools and Jewels](http://people.scs.carleton.ca/~paulv/toolsjewels.html)
+
 \part{Mock Exam}
 
 \part{Notes}

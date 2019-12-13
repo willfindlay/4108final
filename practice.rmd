@@ -55,7 +55,14 @@ library(lubridate)
 
 # Preamble
 
-[Link to Tools and Jewels](http://people.scs.carleton.ca/~paulv/toolsjewels.html)
+## Textbook
+
+- [here is a link to "Tools and Jewels"](http://people.scs.carleton.ca/~paulv/toolsjewels.html)
+
+## General
+
+1. Please follow the provided format
+1. We should prioritize the mock exam over notes
 
 \part{Mock Exam}
 

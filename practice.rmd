@@ -66,9 +66,44 @@ library(lubridate)
 
 \part{Mock Exam}
 
+\newcounter{question}
+\newcounter{subquestion}
+\newcommand{\question}[1]{
+    \stepcounter{question}
+    \setcounter{subquestion}{0}
+    \noindent
+    \thequestion. \hspace{.em} #1
+}
+\newcommand{\subquestion}[1]{
+    \stepcounter{subquestion}
+    \noindent
+    \hspace{1em} \alph{subquestion}) \hspace{.5em} #1
+}
+
 \setcounter{section}{0}
 
 # Basic Concepts and Principles
+
+\question{Provide definitions for the following:}
+\subquestion{Confidentiality}
+\vspace{3em}
+\subquestion{Data integrity}
+\vspace{3em}
+\subquestion{Authentication}
+\vspace{3em}
+\subquestion{Authorization}
+\vspace{3em}
+\subquestion{Availability}
+\vspace{3em}
+\subquestion{Accountability}
+\vspace{3em}
+\vspace{1em}
+
+\question{Explain how repudiation violates accountability.}
+\vspace{5em}
+
+\question{Describe the difference between a {\itshape trusted} and {\itshape trustworthy} actor.}
+\vspace{5em}
 
 # Cryptographic Building Blocks
 

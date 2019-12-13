@@ -66,11 +66,57 @@ library(lubridate)
 
 \part{Mock Exam}
 
+\setcounter{section}{0}
+
+# Basic Concepts and Principles
+
+# Cryptographic Building Blocks
+
+# User Authentication
+
+# Authentication Protocols and Key Establishment
+
+# Operating Systems Security and Access Control
+
+# Software Security -- Privilege and Escalation
+
+# Malicious Software
+
+# Public Key Certificate Management and Use Cases
+
+# Web and Browser Security
+
+# Firewalls and Tunnels
+
+# Intrusion Detection and Network-Based Attacks
+
+\clearpage
+
 \part{Notes}
 
-# Pre-Midterm
+\setcounter{section}{0}
 
-# Post-Midterm
+# Basic Concepts and Principles
+
+# Cryptographic Building Blocks
+
+# User Authentication
+
+# Authentication Protocols and Key Establishment
+
+# Operating Systems Security and Access Control
+
+# Software Security -- Privilege and Escalation
+
+# Malicious Software
+
+# Public Key Certificate Management and Use Cases
+
+# Web and Browser Security
+
+# Firewalls and Tunnels
+
+# Intrusion Detection and Network-Based Attacks
 
 <!-- References -->
 \clearpage

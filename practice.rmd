@@ -168,6 +168,48 @@ Consider the advantages and disadvantages of each, as well as how each might wor
 \question{Describe two risk assessment challenges.}
 \vspace{10em}
 
+\question{Which of the following is not an adversary attribute?}
+\subquestion{objectives}
+\subquestion{outsider/insider}
+\subquestion{methods}
+\subquestion{funding level}
+\subquestion{capabilities}
+\subquestion{attack vector}
+\vspace{1em}
+
+\question{What is a categorical schema? How is it different from a capability-level schema?}
+\vspace{6em}
+
+\question{Compare and contrast a formal security evaluation with penetration testing.}
+
+\begin{table}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Formal Security Evaluation} & \textbf{Penetration Testing}\\
+\hline
+\hline
+\hspace{.4\textwidth} & \hspace{.4\textwidth} \\
+& \\
+& \\
+& \\
+& \\
+& \\
+& \\
+& \\
+& \\
+& \\
+& \\
+& \\
+& \\
+& \\
+\hline
+\end{tabular}
+\end{table}
+\vspace{1em}
+
+\question{What is white-box pen testing? Black-box?}
+\vspace{6em}
+
 # Cryptographic Building Blocks
 
 # User Authentication

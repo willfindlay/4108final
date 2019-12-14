@@ -226,7 +226,7 @@ Consider the advantages and disadvantages of each, as well as how each might wor
 Why or why not?}
 \vspace{8em}
 
-\question{Explain the observability of security in the context of {\itshape negative goals}.}
+\question{Explain the observability (or lack thereof) of security in the context of {\itshape negative goals}.}
 \vspace{8em}
 
 \question{Assurance in security is best described as which of the following?}

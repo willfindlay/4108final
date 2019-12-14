@@ -457,6 +457,52 @@ to $t$ one-time passwords?}
 \question{Describe some advantages and disadvantages of hardware token authentication.}
 \vspace{10em}
 
+\question{Give an example of each of the following modalities with respect to biometric authentication:}
+\subquestion{Physical}
+\vspace{5em}
+\subquestion{Behavioral}
+\vspace{5em}
+\subquestion{Mixed}
+\vspace{5em}
+
+\question{Biometrics are secrets.}
+\subquestion{True}
+\subquestion{False}
+
+\vspace{1em}
+
+\question{Biometric authentication to a remote site via a phone sends your biometric signature for authentication.}
+\subquestion{True}
+\subquestion{False}
+
+\vspace{1em}
+
+\clearpage
+
+\question{Is it better to have a higher false acceptance rate or false rejection rate?
+Make an argument using the definitions of each.}
+
+\vfill
+
+\question{Draw a bimodal distribution with a higher false acceptance rate than false rejection rate.
+Clearly define where your $t$ is located with a straight line.}
+
+\vfill
+
+\clearpage
+
+\question{What is $EER$? How is it used in practice?}
+\vspace{5em}
+
+\question{What is the difference between identification and authentication?}
+\vspace{5em}
+
+\question{Describe at least three criteria used for the evaluation of biometric authentication.}
+\vspace{15em}
+
+\question{Explain failure to enroll and failure to capture in the context of biometric authentication.}
+\vspace{10em}
+
 # Authentication Protocols and Key Establishment
 
 # Operating Systems Security and Access Control

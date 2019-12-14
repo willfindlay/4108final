@@ -108,6 +108,55 @@ library(lubridate)
 \question{Compare and contrast {\itshape privacy}, {\itshape protection}, and {\itshape anonymity}.}
 \vspace{8em}
 
+\question{Come up with a simple example of a security policy for a house and describe a way it might be violated.}
+\vspace{8em}
+
+\question{Label each number in \autoref{threat} using the following terms:}
+\subquestion{target asset}
+\subquestion{vulnerability}
+\subquestion{attacker}
+\subquestion{attack vector}
+\subquestion{threat agent}
+
+\begin{figure}
+\includegraphics[width=.5\textwidth]{./figs/threat-agent-attacker.png}
+\caption{}
+\label{threat}
+\end{figure}
+\vspace{1em}
+
+\FloatBarrier
+
+\question{Draw a state machine diagram of a system's transition from a secure state to either a secure state or an insecure state.}
+\vspace{10em}
+
+\question{Compare and contrast quantitative and qualitative risk assessment.
+Consider the advantages and disadvantages of each, as well as how each might work in theory/practice.}
+
+\begin{table}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Qualitative} & \textbf{Quantitative}\\
+\hline
+\hline
+\hspace{.4\textwidth} & \hspace{.4\textwidth} \\
+& \\
+& \\
+& \\
+& \\
+& \\
+& \\
+& \\
+& \\
+& \\
+& \\
+& \\
+& \\
+& \\
+\hline
+\end{tabular}
+\end{table}
+
 # Cryptographic Building Blocks
 
 # User Authentication

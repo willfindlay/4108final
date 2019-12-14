@@ -86,24 +86,24 @@ library(lubridate)
 
 \question{Provide definitions for the following:}
 \subquestion{Confidentiality}
-\vspace{3em}
+\vspace{4em}
 \subquestion{Data integrity}
-\vspace{3em}
+\vspace{4em}
 \subquestion{Authentication}
-\vspace{3em}
+\vspace{4em}
 \subquestion{Authorization}
-\vspace{3em}
+\vspace{4em}
 \subquestion{Availability}
-\vspace{3em}
+\vspace{4em}
 \subquestion{Accountability}
-\vspace{3em}
+\vspace{4em}
 \vspace{1em}
 
 \question{Briefly explain how repudiation violates accountability.}
-\vspace{5em}
+\vspace{4em}
 
 \question{Describe the difference between a {\itshape trusted} and {\itshape trustworthy} actor.}
-\vspace{5em}
+\vspace{4em}
 
 \question{Compare and contrast {\itshape privacy}, {\itshape protection}, and {\itshape anonymity}.}
 \vspace{8em}
@@ -178,6 +178,7 @@ What does $P$ represent?}
 \subquestion{attack vector}
 \vspace{1em}
 
+\clearpage
 \question{What is a categorical schema? How is it different from a capability-level schema?}
 \vspace{6em}
 
@@ -220,6 +221,7 @@ What does $P$ represent?}
 \subquestion{E:}
 \vspace{1em}
 
+\clearpage
 \question{Draw a tree model for compromising the password to a bank account. Include at least three leaf nodes.}
 \vspace{14em}
 
@@ -237,7 +239,88 @@ Why or why not?}
 \subquestion{Difficult, complete}
 \subquestion{None of the above}
 
+\clearpage
+
 # Cryptographic Building Blocks
+
+\question{Suppose Alice encrypts a message to Bob using $E_k(m) = c$. How does Bob decrypt the message?}
+\vspace{4em}
+
+\question{What is an exhaustive key search? What does the attacker try to do? Is this the worst case for attacking a cryptosystem?}
+\vspace{8em}
+
+\question{Label each of the following attacks as either an action by an {\itshape active} or a {\itshape passive} adversary.
+Once you have labeled the attack, describe it.}
+\subquestion{Known plaintext attack}
+\vspace{4em}
+\subquestion{Ciphertext only attack}
+\vspace{4em}
+\subquestion{Chosen plaintext attack}
+\vspace{4em}
+\subquestion{Chosen ciphertext attack}
+\vspace{4em}
+
+\clearpage
+\question{What is the main advantage of a one-time pad? Describe three disadvantages. Why are one-time pads not used?}
+\vspace{10em}
+
+\question{What is the current standard for block ciphers?}
+\vspace{8em}
+
+\question{Describe a situation in which we would need to use a stream cipher. Why can't you use another type of cipher?}
+\vspace{8em}
+
+\question{What is a mode of operation used for?}
+\vspace{8em}
+
+\question{What is one major flaw with the ECB mode of operation?}
+\vspace{8em}
+
+\clearpage
+
+\question{Draw a picture of the CBC mode of operation.}
+\vfill
+
+\question{Draw a picture of the CTR mode of operation.}
+\vfill
+
+\clearpage
+
+\question{If Alice wants to send a message to Bob using public-key encryption,
+\_\_\_\_\_\_\_\_\_\_ is used to encrypt and \_\_\_\_\_\_\_\_\_\_ is used to decrypt.}
+\subquestion{Bob's private key, Alice's public key}
+\subquestion{Bob's public key, Alice's private key}
+\subquestion{Bob's public key, Bob's private key}
+\subquestion{Alice's private key, Alice's public key}
+\subquestion{None of the above}
+
+\vspace{1em}
+
+\question{If Alice wants to send a message to Bob using a public-key signature scheme,
+\_\_\_\_\_\_\_\_\_\_ is used to sign and \_\_\_\_\_\_\_\_\_\_ is used to verify}
+\subquestion{Bob's private key, Alice's public key}
+\subquestion{Bob's public key, Alice's private key}
+\subquestion{Bob's public key, Bob's private key}
+\subquestion{Alice's private key, Alice's public key}
+\subquestion{None of the above}
+
+\vspace{1em}
+
+\question{How does hybrid encryption work? What role does symmetric key encryption play? Public-key encryption?}
+\vspace{10em}
+
+\question{What three security properties do digital signature schemes provide? To whom to they provide them?}
+\vspace{8em}
+
+\clearpage
+
+\question{What two security properties do MACs provide? To whom do they provide them?}
+\vspace{8em}
+
+\question{What security property does a cryptographic hash provide? To whom does it provide the property?}
+\vspace{8em}
+
+\question{}
 
 # User Authentication
 

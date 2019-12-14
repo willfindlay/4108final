@@ -513,6 +513,78 @@ Clearly define where your $t$ is located with a straight line.}
 
 # Public Key Certificate Management and Use Cases
 
+\question{What is a distinguished name? What does it do?}
+\vspace{5em}
+
+\question{What is a public key certificate? What does it do? What trusted third party does it rely on?}
+\vspace{5em}
+
+\question{Which of the following is generally preferred?}
+\subquestion{An entity sends a public key in their certification request}
+\subquestion{An entity sends a certification request and the CA generates their key pair}
+\subquestion{These are equivalent}
+\vspace{1em}
+
+\question{What does a PKI do? Give one example of a PKI and how it is used in practice.}
+\vspace{10em}
+
+\question{What is X509 used for? What does it specify?}
+\vspace{5em}
+
+\question{What is a certificate chain? Why are they necessary?}
+\vspace{5em}
+
+\question{What part of a certificate chain requires implicit trust? What part(s) is expected to sign its own certificate?}
+\vspace{5em}
+
+\question{What happens if part of a certificate chain is broken?}
+\vspace{5em}
+
+\question{What is an out-of-band channel? What do we use them for when checking certificate integrity?}
+\vspace{5em}
+
+\question{Why is allowing users to manually trust certificates not always the best idea? Why do browsers do it anyway?}
+\vspace{5em}
+
+\question{Consider Trust-On-First-Use under the following circumstances. What is the result in each case?}
+\subquestion{An attacker has replaced a self-signed certificate with their own}
+\vspace{5em}
+\subquestion{The self-signed certificate is legitimate}
+\vspace{5em}
+
+\question{Suppose you tried to browse a site with an X509v3 certificate that had 4 extension fields, one marked
+critical, the other three non-critical. What would happen in the following scenarios (assuming the rest of the
+certificate is fine)?}
+\subquestion{You have an older browser that cannot handle the critical extensions}
+\vspace{5em}
+\subquestion{You have an older browser that cannot handle one of the non-critical extensions}
+\vspace{5em}
+\subquestion{You have an older browser that cannot handle any of the non-critical extensions}
+\vspace{5em}
+
+\question{Draw a picture of a cross certificate between two hierarchies. Describe one use case for cross certificates.}
+\vspace{10em}
+
+\question{Consider the difference between {\itshape trust} and {\itshape trustworthiness}. What does a certificate
+trust model provide with respect to these terms?}
+\vspace{5em}
+
+\question{Label (a), (b), and (c) in \autoref{ca-hierarchies} with the correct label from the following choices:}
+
+\subquestion{Ring mesh}
+\subquestion{Bridge CA model}
+\subquestion{Separate domains}
+\vspace{1em}
+
+\question{Circle the trust anchors in \autoref{ca-hierarchies}.}
+\vspace{1em}
+
+\begin{figure}
+\includegraphics[width=0.5\textwidth]{./figs/ca-hierarchies.png}
+\caption{}
+\label{ca-hierarchies}
+\end{figure}
+
 # Web and Browser Security
 
 # Firewalls and Tunnels

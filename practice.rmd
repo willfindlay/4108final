@@ -157,6 +157,17 @@ Consider the advantages and disadvantages of each, as well as how each might wor
 \end{tabular}
 \end{table}
 
+\question{Consider $R = T \times V \times C$.}
+\subquestion{What is this equation for?}
+\vspace{4em}
+\subquestion{Describe each variable in this equation. How does each variable relate to the equation's purpose?}
+\vspace{4em}
+\subquestion{Which two variables may be combined into $P$? What does the simplified equation look like?}
+\vspace{4em}
+
+\question{Describe two risk assessment challenges.}
+\vspace{10em}
+
 # Cryptographic Building Blocks
 
 # User Authentication

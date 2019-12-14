@@ -72,12 +72,12 @@ library(lubridate)
     \stepcounter{question}
     \setcounter{subquestion}{0}
     \noindent
-    \thequestion. \hspace{.em} #1
+    \thequestion.\hspace{.5em}#1
 }
 \newcommand{\subquestion}[1]{
     \stepcounter{subquestion}
     \noindent
-    \hspace{1em} \alph{subquestion}) \hspace{.5em} #1
+    \hspace{1em}\alph{subquestion})\hspace{.5em} #1
 }
 
 \setcounter{section}{0}
@@ -209,6 +209,18 @@ Consider the advantages and disadvantages of each, as well as how each might wor
 
 \question{What is white-box pen testing? Black-box?}
 \vspace{6em}
+
+\question{Consider STRIDE. What does each letter stand for?}
+\subquestion{S:}
+\subquestion{T:}
+\subquestion{R:}
+\subquestion{I:}
+\subquestion{D:}
+\subquestion{E:}
+
+\question{Draw a tree model for compromising the password to a bank account. Include at least three leaf nodes.}
+
+
 
 # Cryptographic Building Blocks
 

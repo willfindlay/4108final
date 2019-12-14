@@ -217,10 +217,24 @@ Consider the advantages and disadvantages of each, as well as how each might wor
 \subquestion{I:}
 \subquestion{D:}
 \subquestion{E:}
+\vspace{1em}
 
 \question{Draw a tree model for compromising the password to a bank account. Include at least three leaf nodes.}
+\vspace{14em}
 
+\question{Is it possible to completely test a comprehensive (and practical) set of security mechanisms for a system?
+Why or why not?}
+\vspace{8em}
 
+\question{Explain the observability of security in the context of {\itshape negative goals}.}
+\vspace{8em}
+
+\question{Assurance in security is best described as which of the following?}
+\subquestion{Simple, effective}
+\subquestion{Difficult, partial}
+\subquestion{Simple, practical}
+\subquestion{Difficult, complete}
+\subquestion{None of the above}
 
 # Cryptographic Building Blocks
 

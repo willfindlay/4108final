@@ -10,6 +10,7 @@ subparagraph: yes
 classoption: 12pt
 header-includes:
     - \usepackage{findlayrmd}
+    - \usepackage{subcaption}
 output:
     pdf_document:
         citation_package: biblatex
@@ -41,12 +42,14 @@ library(lubridate)
 \tableofcontents
 
 <!-- List of figs, tables, listings -->
+<!--
 \newpage
 \listoffigures
 \newpage
 \listoftables
 \newpage
 \lstlistoflistings
+-->
 
 <!-- Setup the rest of the document -->
 \newpage
@@ -320,9 +323,139 @@ Once you have labeled the attack, describe it.}
 \question{What security property does a cryptographic hash provide? To whom does it provide the property?}
 \vspace{8em}
 
-\question{}
+\question{Describe each of the following properties of cryptographic hash functions.}
+\subquestion{Preimage resistance}
+\vspace{4em}
+\subquestion{Second preimage resistance}
+\vspace{4em}
+\subquestion{Collision resistance}
+\vspace{4em}
+
+\question{How are hash functions used for password storage and verification? What property or properties of hash functions make
+this a desirable use case?}
+\vspace{10em}
+
+\clearpage
+
+\question{Is it generally better to MAC then encrypt, or encrypt then MAC?}
+\vspace{4em}
 
 # User Authentication
+
+\question{Describe each of the following ways to defeat password authentication.
+For each technique you describe, provide one way to prevent it.}
+\subquestion{Online guessing}
+\vspace{6em}
+\subquestion{Offline guessing}
+\vspace{6em}
+\subquestion{Defeating password recovery}
+\vspace{6em}
+\subquestion{Bypassing authentication interface}
+\vspace{6em}
+\subquestion{Password capture}
+\vspace{6em}
+
+\clearpage
+
+\question{Describe 3 advantages of passwords. Describe 3 disadvantages.}
+\vspace{10em}
+
+\question{What is a password hash salt? A pepper?}
+\vspace{10em}
+
+\question{What is iterated hashing? What is it used for? How does it compare with other techniques to solve the same problem?}
+\vspace{20em}
+
+\clearpage
+
+\question{Explain the following:}
+\subquestion{Dictionary attack}
+\vspace{4em}
+\subquestion{Mangling rules}
+\vspace{4em}
+
+\question{Describe the trade-off that occurs when using system-assigned passwords. How do these passwords help to mitigate dictionary attacks}
+\vspace{10em}
+
+\question{Suppose you had a password scheme that has an alphabet of size $b$ and allows passwords as long as $n$ characters.
+How long would it take to brute force passwords in this scheme in:}
+\subquestion{The worst case?}
+\vspace{5em}
+\subquestion{The average case?}
+\vspace{5em}
+
+\question{Consider $q = GT/R$. What does this equation describe? What is each variable for?}
+\vspace{8em}
+
+\clearpage
+
+\question{Draw password distributions in \autoref{password-space} according to the captions.}
+
+\begin{figure*}
+\begin{subfigure}[t]{0.4\textwidth}
+\includegraphics{./figs/password-space.png}
+\caption{Password distribution we want.}
+\end{subfigure}
+~
+~
+~
+\begin{subfigure}[t]{0.4\textwidth}
+\includegraphics{./figs/password-space.png}
+\caption{Password distribution we see in practice.}
+\end{subfigure}
+\caption{}
+\label{password-space}
+\end{figure*}
+
+\vspace{1em}
+
+\question{Discuss rate limiting and password change policies with respect to online guessing attacks.
+How does $q = GT/R$ factor into making decisions regarding these policies?}
+\vfill
+
+\clearpage
+
+\question{Discuss the drawbacks of complex site login password composition policies. Suggest at least three better alternatives.}
+\vspace{20em}
+\question{What is a passkey? Why are complex passwords preferred for passkeys? How can passphrases help with usability issues
+associated with these complex passwords?}
+\vfill
+
+\clearpage
+
+\question{How can password blacklisting be used to reduce the effectiveness of dictionary attacks?}
+\vspace{10em}
+
+\question{Why are secret questions generally a terrible method for password recovery?
+Why do you think they are so widely used despite their drawbacks?}
+\vspace{20em}
+
+\question{What is a one-time password? How can a Lamport Hash Chain be used to extend a single key word
+to $t$ one-time passwords?}
+\vspace{20em}
+
+\clearpage
+
+\question{Explain how Lamport Hash Chains are vulnerable to a man-in-the-middle attack using small $n = t - i$.}
+\vspace{20em}
+
+\question{Describe the following categories of authentication and provide an example for each:}
+\subquestion{What you have}
+\vspace{5em}
+\subquestion{What you are}
+\vspace{5em}
+\subquestion{What you know}
+\vspace{5em}
+\subquestion{Where you are}
+\vspace{5em}
+
+\clearpage
+
+\question{What is multi-factor authentication?}
+\vspace{5em}
+
+\question{Describe some advantages and disadvantages of hardware token authentication.}
+\vspace{10em}
 
 # Authentication Protocols and Key Establishment
 

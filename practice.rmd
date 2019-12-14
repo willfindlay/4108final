@@ -162,7 +162,8 @@ Consider the advantages and disadvantages of each, as well as how each might wor
 \vspace{4em}
 \subquestion{Describe each variable in this equation. How does each variable relate to the equation's purpose?}
 \vspace{4em}
-\subquestion{Which two variables may be combined into $P$? What does the simplified equation look like?}
+\subquestion{Which two variables may be combined into $P$? What does the simplified equation look like?
+What does $P$ represent?}
 \vspace{4em}
 
 \question{Describe two risk assessment challenges.}

@@ -595,15 +595,45 @@ trust model provide with respect to these terms?}
 \subquestion{Enterprise PKI model}
 \vspace{1em}
 
+\question{Circle the trust anchor(s) for the right-most leaves in each diagram in \autoref{bt-question}.}
+\vspace{1em}
+
 \begin{figure}
 \includegraphics[width=0.7\textwidth]{./figs/bt-question.png}
 \caption{}
 \label{bt-question}
 \end{figure}
+\FloatBarrier
 \vspace{3em}
 
-\question{Circle the trust anchor(s) for the right-most leaves in each diagram in \autoref{bt-question}.}
+\question{What is Web of Trust? Give an example of where we might use it.}
+\vspace{5em}
+
+\question{Order the following validation types from least to most thorough:}
+\subquestion{DV}
+\subquestion{OV}
+\subquestion{EV}
+\subquestion{IV}
 \vspace{1em}
+
+\question{What is a certificate substitution attack? What does this mean for the browser trust model?}
+\vspace{5em}
+
+\question{How easy is it for a user to alter the browser trust model? Answer in terms of both accepting and revoking trust.
+Is this a good thing or a bad thing?}
+\vspace{15em}
+
+\question{What do PEM, PGP, and S/MIME all have in common?}
+\vspace{5em}
+
+\question{Where is the security header added in secure email?}
+\vspace{5em}
+
+\question{Briefly explain how secure email uses public-key and/or symmetric-key cryptography.}
+\vspace{10em}
+
+\question{What is a public key server? What is a certificate directory? What problem do these hope to solve?}
+\vspace{15em}
 
 # Web and Browser Security
 

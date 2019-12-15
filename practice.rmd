@@ -769,15 +769,63 @@ Is this a good thing or a bad thing?}
 - gain root privileges
 - move from root privileges to kernel privileges (e.g., install a rootkit kernel module)
 
+
+
+
+
+
 # Malicious Software
+
+## Viruses
+
+## Worms
+
+## Trojan Horses
+
+## Backdoors
+
+## Key Loggers
+
+## Rootkits
+
+## Drive-By Downloads / Droppers
+
+## Ransomware
+
+## Botnets
+
+
+
+
+
 
 # Public Key Certificate Management and Use Cases
 
+
+
+
+
+
 # Web and Browser Security
+
+
+
+
+
 
 # Firewalls and Tunnels
 
+
+
+
+
+
 # Intrusion Detection and Network-Based Attacks
+
+
+
+
+
 
 <!-- References -->
 \clearpage

@@ -645,7 +645,6 @@ Is this a good thing or a bad thing?}
 
 \part{Notes}
 
-\setcounter{section}{0}
 
 # Basic Concepts and Principles
 
@@ -658,6 +657,117 @@ Is this a good thing or a bad thing?}
 # Operating Systems Security and Access Control
 
 # Software Security -- Privilege and Escalation
+
+## Race Conditions
+
+- TOCTOU
+    - time of check to time of use
+    - setuid has owner's privileges, but we need to make sure real user can access the file
+    - `access` system call traditionally used
+    - but an attacker can attempt to change the file between checking access and opening it for writing
+    - this allows us to access another file that we shouldn't
+- how to stop this?
+    - atomic privilege checks would be nice
+        - not portable
+    - drop privileges and then fork before opening the file, make descriptor available to parent before exiting
+        - also not portable
+    - use system calls that deal directly with file descriptors
+        - also not portable
+    - no perfect solution, application dependent
+- other notes
+    - niceness can tip the balance in the attacker's favor
+    - make checking process much higher niceness (slower) -> larger window to win the race
+
+## Integer-Based Vulnerabilities and C Issues
+
+- problems:
+    - signedness
+    - overflow
+    - underflow
+
+### Problems with C
+
+- favor efficiency/direct access over security
+    - it lets us make mistakes like the ones above without warning
+- undefined behavior -> machine-dependent results
+    - signed integers have undefined behavior, unsigned integers use modular wrapping
+- pointer arithmetic
+- accessing memory using overflow/underflow values
+- using overflow/underflow values for branching conditions
+- pointer arithmetic changes based on size of type
+- types can have different sizes based on architecture
+
+#### Why We Can't Just Fix This
+
+- some developers rely on the behavior we described above (intentional overflows)
+    - introducing runtime errors breaks backwards compatibility
+- warning about possible errors is not necessarily possible
+- safe integer libraries are a good option, but how do we enforce adoption?
+
+## Stack-Based Buffer Overflows
+
+- too many bytes written to stack may overflow into adjacent memory
+- natural vs intentional
+    - natural yields unexpected outcomes
+    - intentional results in security issues
+
+### Memory Layout
+
+- text and global data segments are lowest, initialized at start
+- heap is low, grows up
+- stack is high, grows down
+
+### How it Works
+
+- on function call, new args are pushed onto stack
+- current instruction pointer is pushed as return address
+- now we push local vars onto stack and execute the function
+- overflowing a local var overwrites higher memory
+    - if we overwrite return address, we can point it elsewhere, including into our overwritten memory
+
+## Heap-Based Buffer Overflows
+
+- dynamic allocation is less predictable, varies between systems
+- attacker has to experiment to find a vulnerable variable
+    - there needs to be a useful higher memory address that is exploitable
+- this is also only useful if memory corruption does not crash the program
+
+### Heap Spraying
+
+- inject code many, many times into various locations in the heap
+- then use an independent exploit to trigger code execution
+- you only need to get it right once
+
+## Three Main Steps for Buffer Overflows
+
+1. Code injection
+    - inject code into an area of memory
+1. Corruption of control flow
+    - change control flow to go to that code
+1. Seizure of control
+    - run that code
+
+## Buffer Overflow Exploit Defenses
+
+- make head and stack non-executable
+- stack canaries
+    - key words that detect code injection
+    - if the key word is overwritten, raise an error
+- run-time bounds checking
+- ASLR, random heap allocators
+    - randomize memory layout
+    - disrupts attacks that rely on known memory locations
+- type-safe languages
+- safe C libraries
+- static analysis tools
+    - analyze code and flag potential problems
+
+## Privilege Escalation
+
+- move from fixed functionality to a command shell
+- escape a sandbox
+- gain root privileges
+- move from root privileges to kernel privileges (e.g., install a rootkit kernel module)
 
 # Malicious Software
 

@@ -776,32 +776,171 @@ Is this a good thing or a bad thing?}
 
 # Malicious Software
 
-## Viruses
+## Viruses vs Worms
 
-## Worms
+- both propagate, carry a payload
+    - mechanisms differ
+- virus
+    - requires user interaction to propagate, run
+    - payload triggers on a condition
+    - infect host files / software
+        - even documents -> macro viruses
+- worm
+    - propagate automatically, over networks
+    - don't need to be run by a user
+    - exploit running software
+
+#### Virus Infection Strategies
+
+1. Write beginning of file
+1. Write end of file
+1. Overwrite entire file
+1. Overwrite a specific portion of file
+
+- appending or prepending does not damage functionality, but is noticeable due to file size change
+- overwriting harms functionality of program
+    - make sure it's not critical to running the system
+
+#### Virus Detection
+
+- impossible to write a program to detect all possible viruses
+- instead, we play a cat and mouse game with attackers
+    - increasing complexity
+- detection: data signature-based detection, integrity checking, behavioral signatures
+
+#### Virus Anti-Detection
+
+- encrypt and store internal decryptor key
+- polymorphic virus that changes decryptor portions across infections
+- place decryption key in an external file
+- metamorphic virus -> mutates both body and mutation engine
+
+#### Auto Rooters
+
+- scan for vulnerable targets, exploit opportunistically
+- only need one vulnerability to spawn a root shell and/or install a rootkit
+
+#### Fast Worm Spreading
+
+- generate hit lits by scanning for vulnerable hosts
+- permute compromised addresses to find new targets strategically
+- internet-scale hit lists
+    - scan servers
 
 ## Trojan Horses
 
+- disguises malicious functionality as useful functionality
+- sometimes combines malicious functionality with useful functionality
+- often social engineering
+    - disguised updates for legitimate programs
+- may remain undetected for some time
+
 ## Backdoors
+
+- bypass normal entrypoints (and access control)
+- remote-access Trojan (spawn a remote root shell)
+- malicious remote desktop/shell tools
+- rootkits
 
 ## Key Loggers
 
+- can be implemented with rootkits hooking system calls
+- log user actions / keystrokes to steal information
+- more severe -> surveillance software
+
 ## Rootkits
 
-## Drive-By Downloads / Droppers
+- installed after an attack to allow attacker to keep coming back
+- goals
+    - conceals its presence
+    - controls or manipulates applications/OS
+    - facilitates long-term additional malicious activity
+- rootkits often provide backdoors
+- can be implemented in userspace or kernelspace
+    - kernelspace is more dangerous (supervisor mode, control whole OS, easier to conceal itself)
+
+#### Rootkit Methods
+
+- hooking system calls (patch dispatch table)
+- inline hooking
+    - detour and trampoline functions
+- kernel object modification (to hide activity)
+    - either directly change the kernel object
+    - or modify the return values of key system calls via postprocessing
+- installation strategies
+    - exploit buffer overflows in kernel
+    - alter shared library or application in userspace
+    - install loadable kernel module (after gaining root privilege via some other means)
+
+## Drive-By Downloads
+
+- exploit browser vulnerability + code injection to legitimate site (or by phishing with a malicious site)
+- results in downloading a malicious executable silently
+- defenses?
+    - downloader graphs
+    - comparing download patterns
+
+## Droppers
+
+- malicious software whose job it is to download and install other malicious software
+- can arrive by means of a worm, virus, trojan, or drive-by-download
 
 ## Ransomware
 
+- malware designed to extort users into paying
+- often controlled via a botnet
+- anonymous payment methods like bitcoin are exacerbating their effectiveness
+- examples
+    - encryption file lockers (use encryption to lock users out of their files and require payment to unlock the key)
+    - other methods of file locking (access control, threaten to erase data, syskeying in Windows)
+
 ## Botnets
 
+- a coordinated network of enslaved machines
+    - exploited initially via shell code or other means
+- attack establishes control over many remote systems
+    - the controlling machine is called the botnet header
+- uses these systems to commit cyber crimes
+    - provide an economy of scale to attackers
+    - DDOS attacks, spread ransomware, malicious crypto mining, etc.
 
+## Zero-Day Exploits
+
+- target a vulnerability in a program that was not known previously
+- only useful before the vulnerability is patched
+- users not patching their software can make this especially problematic
+
+## Logic Bomb
+
+- malicious payload executed when a condition is met
+- this is used in viruses and worms for example
 
 
 
 
 # Public Key Certificate Management and Use Cases
 
+## PKIs
 
+## Certificates
+
+## Certificate Authorities
+
+## Certificate Trust Models
+
+#### Separate Domains
+
+#### Ring Mesh
+
+#### Bridge CA Model
+
+#### Browser Trust Model
+
+#### Enterprise PKI
+
+#### Web of Trust
+
+## Secure Email / Public Key Distribution
 
 
 

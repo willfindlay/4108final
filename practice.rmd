@@ -576,7 +576,7 @@ trust model provide with respect to these terms?}
 \subquestion{Separate domains}
 \vspace{1em}
 
-\question{Circle the trust anchors in \autoref{ca-hierarchies}.}
+\question{Circle the trust anchor for the right-most leaf in \autoref{ca-hierarchies}.}
 \vspace{1em}
 
 \begin{figure}
@@ -584,6 +584,24 @@ trust model provide with respect to these terms?}
 \caption{}
 \label{ca-hierarchies}
 \end{figure}
+
+\question{What are the leaf nodes in the browser trust model for CAs?}
+\vspace{5em}
+
+\question{For each label in \autoref{bt-question}, decide which of the following terms suits it best.}
+\subquestion{Browser trust model}
+\subquestion{Enterprise PKI model}
+\subquestion{Strict CA hierarchy model}
+\vspace{1em}
+
+\begin{figure}
+\includegraphics[width=0.7\textwidth]{./figs/bt-question.png}
+\caption{}
+\label{bt-question}
+\end{figure}
+
+\question{Circle the trust anchor for the right-most leaf in \autoref{bt-question}.}
+\vspace{1em}
 
 # Web and Browser Security
 

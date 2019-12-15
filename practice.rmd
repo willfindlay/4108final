@@ -947,8 +947,68 @@ Is this a good thing or a bad thing?}
 
 # Web and Browser Security
 
+**N.B., I am omitting all the webdev review stuff at the beginning of this chapter.
+If somebody would like to make a PR to add it, that would surely be appreciated.**
 
 
+## TLS and HTTPS
+
+#### TLS Layers
+
+- two layers
+1. handshake layer
+    - (unencrypted) key exchange
+    - (encrypted) server parameters
+    - (encrypted) integrity and authentication
+1. record layer
+    - protects all data using negotiated parameters
+
+#### TLS Key Exchange
+
+- three options
+1. DHE (ephemeral diffie-hellman)
+     - either finite fields (integers mod p)
+     - or elliptic curves
+1. PSK (pre-shared key)
+     - either pre-shared via out-of-band channel or from a previous TLS session
+1. PSK combined with DHE
+
+#### TLS Server Authentication
+
+- two (or technically four) options
+1. either PSK session key
+1. or digital signature (based on certificate)
+    - digital signature RSA
+    - or ECDSA
+    - or EdDSA
+- client and server send MAC codes to signal they are done
+
+#### TLS Encryption and Integrity
+
+- usually encryption is done in two ways
+1. either via ChaCha20 (stream cipher)
+1. or AES (block cipher) using an acceptable mode
+- hash algorithms provide data integrity
+
+## DOM Objects
+
+## Same-Origin Policy
+
+## HTTP Cookies
+
+## Authentication Cookies
+
+## CSRF
+
+## XSS
+
+#### XSS-Stored
+
+#### XSS-Reflected
+
+## SQL Injection
+
+## Sanitization
 
 
 

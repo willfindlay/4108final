@@ -922,25 +922,137 @@ Is this a good thing or a bad thing?}
 
 ## PKIs
 
+- public key infrastructure
+- basic function is to provide a means of verifying a public key belongs to an entity
+- CAs, sPKI, WoT
+
 ## Certificates
+
+- fields
+    - subject (DN)
+    - issuer (DN)
+    - version information
+    - validity period
+    - extension fields
+        - critical and non-critical (if you can't handle critical, reject)
+- X509 tells you what fields
+- DN
+    - distinguished name (uniquely IDs an actor)
+    - Country
+    - Organization
+    - Organizational Unit
+    - Common name
+- subject alternate name(s)
+    - other names that a subject can go by
+- certificate can be
+    - issued
+    - revoked
+    - expired
+    - valid
+    - invalid
 
 ## Certificate Authorities
 
+- issue certificates
+- root CA requires implicit trust
+    - intermediate CAs to distribute the task of issuing/verifying
+- each CA has its own certificate
+    - root CA (trust anchor) signs its own
+
+#### Certificate Chains
+
+- intermediate CAs
+- root of the chain is the root CA
+    - root CA is generally trusted via information obtained from an out of band channel
+    - e.g., browsers have a list of root CAs they trust implicitly
+        - cross certificate pairs can handle the test
+
+#### Cross Certificate Pair
+
+- two CAs sign each other's certificates
+- if you trust one, you can trust the other one
+- builds connected trust on the internet
+
 ## Certificate Trust Models
 
-#### Separate Domains
+#### Single-CA
 
-#### Ring Mesh
+- each tree has one CA
 
-#### Bridge CA Model
+- Separate Domains
+    - one CA for each set of leaf nodes
+    - everything is kept completely separate otherwise
+    - no cross certificate pairs
+- Ring Mesh
+    - like separate domains except all top-level CAs are linked with cross certificate pairs
+- Bridge CA Model
+    - cross certificate pairs with a central hub
+
+#### Strict Hierarchy
+
+- root CA with intermediate CAs forming a connected tree
+- cross certification is possible within the tree but not between separate trees
+
+#### Ring-Mesh of Tree Roots
+
+- like strict hierarchy except now tree roots are free to cross-certify
 
 #### Browser Trust Model
 
+- list of trust anchors for each end point
+- no cross certificates in browser trust model
+- each tree is a hierarchy
+- leaf nodes correspond to servers
+
 #### Enterprise PKI
+
+- intermediate CAs at lower levels cross certify between departments
+- allows fine-grained control of trust
 
 #### Web of Trust
 
+- each entity signs their own keys and then entities sign each other's keys
+- you pick a subset to trust, and then trust keys trusted by those you already trust
+- used in PGP, secure email for example
+
+## Grades of Certificate
+
+- IV
+    - user decides to trust a self-signed certificate
+- DV
+     - validates a domain only
+- OV
+    - validates domain and organization
+- EV
+    - extensive validation process
+
 ## Secure Email / Public Key Distribution
+
+- technologies
+    - PGP -> web of trust
+    - PEM -> one-root PKI
+    - S/MIME -> secure MIME, used with centralized certificate management
+- relies on either key distribution or certificate directories
+
+#### Security Header
+
+- goes into the content rather than the original header
+    - for backwards compatibility
+- this header is digitally signed and often contains an encrypted symmetric key
+    - this symmetric key is encrypted with public key crypto
+    - allows us to read encrypted mail offline
+- steps
+    1. verify the signature
+    1. decrypt the symmetric key
+    1. use the symmetric key to decrypt the body to plaintext
+
+#### Key Distribution
+
+- we ask a trusted third party to generate a public key and owner ID for us
+
+#### Certificate Directory
+
+- we ask a trusted third party to distribute certificates to use as needed
 
 
 
@@ -1014,12 +1126,60 @@ If somebody would like to make a PR to add it, that would surely be appreciated.
 
 # Firewalls and Tunnels
 
+## Packet Filter Firewalls
+
+## Proxy Firewalls and Firewall Architectures
+
+## SSH
+
+## VPNs and Encrypted Tunnels
+
 
 
 
 
 
 # Intrusion Detection and Network-Based Attacks
+
+## Response Types: Detection vs Prevention
+
+#### Alarms (Detection Only)
+
+#### Intrusion Prevention Systems
+
+## Architecture: Host-Based vs Network-Based
+
+#### Host Based
+
+#### Network Based
+
+## Event Outcomes
+
+#### False Positives
+
+#### False Negatives
+
+#### True Positives
+
+#### True Negatives
+
+#### Base Rates and FPR/FNR Trade-Off
+
+## Methodologies: Anomalies vs Signatures vs Specifications
+
+#### Blacklisting vs Whitelisting
+
+#### Anomaly Detection
+
+#### Signatures
+
+#### Specifications
+
+## Sniffers, Reconnaissance Scanners, Vulnerability Scanners
+
+## DoS Attacks
+
+## Address Resolution Attacks
 
 
 

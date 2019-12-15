@@ -590,8 +590,8 @@ trust model provide with respect to these terms?}
 
 \question{For each label in \autoref{bt-question}, decide which of the following terms suits it best.}
 \subquestion{Browser trust model}
-\subquestion{Enterprise PKI model}
 \subquestion{Strict CA hierarchy model}
+\subquestion{Enterprise PKI model}
 \vspace{1em}
 
 \begin{figure}

@@ -1512,9 +1512,39 @@ If somebody would like to make a PR to add it, that would surely be appreciated.
 
 #### Sniffers
 
+- tools need to process packets at line speed (to avoid slowdowns or self-inflicted DoS)
+- monitor network traffic (even passively)
+    - look at things like headers
+    - for unencrypted traffic, we can even look at contents
+- attackers can use these tools too
+    - this is a motivation for encrypted traffic
+
+#### Hubs vs Switches
+
+- hubs broadcast to all neighbors
+- switches selectively forward
+
 #### Reconnaissance Scanners
 
+- common precursor to an attack
+- also useful for sysadmins to map their own network and get an idea of what is going on
+    - network introspection/visibility
+- send probe connection requests to look for open ports and running services
+- port can be
+    - open (daemon waiting)
+    - closed (no service offered)
+    - blocked (denied by access control)
+- OS fingerprinting
+    - port scanners can identify an OS with high confidence
+
 #### Vulnerability Scanners
+
+- scan a system for known vulnerabilities
+- produces a comprehensive report
+- does so using benign payloads (unlike penetration testing)
+- limitations/cautions?
+    - responsible release of exploit modules -> attackers already have, so legitimate parties might as well
+    - credentialed scans can produce far more detailed results (but be careful)
 
 ## DoS Attacks
 
@@ -1540,11 +1570,45 @@ If somebody would like to make a PR to add it, that would surely be appreciated.
     - DoS attack from many machines flooding packets to a network
     - botnets are often used for this
 
+#### Ingress/Egress Filtering
+
+- packet filters to mitigate address spoofing
+- use a whitelist and only allow packets in a known range to enter
+- martian addresses -> invalid source address
+    - these are dropped
+- egress filtering network traffic as it leaves
+    - match only known destinations
+    - prevents hosts being used as attack agents
+
 ## Address Resolution Attacks
+
+- DNS servers used to query for IP addresses matching host names
+    - go up the chain until we get an answer
+- potentially caching at each step
+    - cache is cleared after specified TTL
+- optionally, we also use static mappings in our local "hosts" file
 
 #### DNS Attacks (Pharming)
 
+- a means of falsifying DNS lookup at any stage in the process
+- pharming forces a user to access a malicious site
+    - whereas phishing lures a user into clicking a link
+- some examples
+    - modify local hosts files
+    - tamper intermediate DNS servers
+    - modify responses from network
+    - malicious DNS server settings (point to a malicious DNS)
+
 #### ARP Spoofing Attacks
+
+- ARP maps IP addresses to local MAC addresses on a local network
+- hosts broadcast queries w.r.t which MAC belongs to which IP
+    - each LAN host keeps a cache table of responses
+- attacking hosts can send false ARP replies -> poisons the ARP caches
+- attacker can inspect and even modify traffic before it reaches the real destination
+- defending ARP spoofing?
+    - maintain static read-only ARP tables at each host
+    - preferred long term solution -> reliable authentication between local hosts
 
 
 

@@ -680,6 +680,107 @@ Is this a good thing or a bad thing?}
 
 # Operating Systems Security and Access Control
 
+## Memory Protection
+
+- physical memory -> pages
+- virtual memory -> joins pages from all over the place to appear as if they are continuous
+
+#### Descriptor Register
+
+- OS maintains per-process descriptor segment that holds a table of indices (segment descriptors)
+- descriptor base register points to this segment
+- each index has starting address, current size, and access permissions
+
+#### Memory Access Permissions
+
+- `r` readable by non-supervisor
+- `w` writable by non-supervisor
+- `x` executable by non-supervisor
+- `m` supervisor mode when executing
+- `f` fault bit: trap to supervisor on access (overrides other bits)
+
+## Reference Monitor, Access Matrix, Security Kernel
+
+- rows = subjects
+    - each row is a capability list for a subject
+- columns = objects
+    - each column is an access control list for an object
+- reference monitor controls access attempts to resources
+    - in practice, this will be several monitors for several access types
+- these ideas taken together form a security kernel
+- reference monitor is only a model, implementation varies in practice
+
+## Audit Logs
+
+- OS maintains audit logs that describe user attempts to access resources, run programs, etc.
+- basically leaves an audit trail of how the user interacts with the system
+- these logs can be useful for host-based IDS data collection
+
+## File / Directory Permission Bits
+
+- binary
+    - `d rwx rwx rwx`
+    - read write execute for user, group, other
+    - first bit specifies special file types (directory, symlink, char device, block device, named pipe)
+- octal
+    - `777` -> `rwx` for all
+    - `7777` -> `rwx` for all and also sets setuid, setgid, and sticky bit
+    - the left most octal digit specifies: 1 -> sticky bit, 2 -> setgid, 4 -> setuid
+
+#### `setuid`, `setgid`
+
+- special bits that specify we run with the euid and egid of the owner respectively
+- often used with root-owned binaries
+- denoted with an `s` in the character permission model on top of the execute bit for user and group
+    - if we don't have execute permissions, we still can't run it though
+
+#### Real, Effected, Saved `uid` and `gid`
+
+- `ruid`, `rgid`
+    - the actual uid and gid of the user
+- `euid`, `egid`
+    - effective uid and gid of the user, changed when running a setuid or setgid executable
+- `suid`, `sgid`
+    - saved uid and gid, used to restore privilege back to normal when dropping privileges
+
+#### Sticky Bit (`t-bit`)
+
+- prevents the deletion and renaming of files within a directory
+    - unless they are owned by you
+    - or you are the owner of the directory
+
+#### `umask`
+
+- permissions to take away from default permissions on file creation
+- for example, if we created a file with
+    - rw -> `666` and had a umask `022` (very common)
+    - we would end up with `644`
+    - this corresponds to rw for owner and r for group and other
+- for octal, this is easy, we just subtract them
+- for binary, just and it with the notted umask
+
+#### ACLs
+
+- augments user group other model
+- specify permissions for specific users and groups in addition to `ugo`
+- mask specifies limits for these specific users and groups
+    - for example, if I set `user:william:rwx` but mask was `mask::r-x`, `william` would not be able to write
+
+## Symbolic Links, Hard Links, Deleting Files
+
+- symbolic link
+    - points to pathname of another file
+    - deleting original breaks link
+- hard link
+    - associates new path name with same inode
+    - deleting original preserves link
+- deleting a file
+    - removes a pathname-inode association
+    - file is only "deleted" once last link is removed
+    - but even then, data still exists, can be recovered
+    - only way to truly delete is to overwrite with `0`s then unlink
+
+## Role-Based Access Control / Mandatory Access Control
 
 
 

@@ -648,13 +648,43 @@ Is this a good thing or a bad thing?}
 
 # Basic Concepts and Principles
 
+
+
+
+
+
+
 # Cryptographic Building Blocks
+
+
+
+
+
+
 
 # User Authentication
 
+
+
+
+
+
+
 # Authentication Protocols and Key Establishment
 
+
+
+
+
+
+
 # Operating Systems Security and Access Control
+
+
+
+
+
+
 
 # Software Security -- Privilege and Escalation
 
@@ -1227,21 +1257,172 @@ If somebody would like to make a PR to add it, that would surely be appreciated.
 
 #### For SQL Specifically
 
-    - adjust input to remove bad characters
-    - blacklisting known-bad input
-    - only allowing known-good input (whitelisting)
+- adjust input to remove bad characters
+- blacklisting known-bad input
+- only allowing known-good input (whitelisting)
 
 
 
 # Firewalls and Tunnels
 
+- inbound (ingress) packets
+    - protect network from internet
+- outbound (egress) packets
+    - protect from compromised machines or malicious insiders (accessing the outside world)
+
+#### As a Chokepoint
+
+- requires secure perimeter
+- this isn't really a thing anymore thanks to mobile data, etc
+- but firewalls remain useful
+    - protect legacy apps
+    - enforce IP security policies lacking wireless access to physical hosts
+
+#### Limitations
+
+- assume true perimeters exist
+- insider the network is trusted, little protection from users cooperating with outsiders
+- trusted users make bad connections
+- tunneling can bypass them
+- can't inspect encrypted content
+
 ## Packet Filter Firewalls
+
+- actions
+    - `ALLOW` -> allow packet
+    - `DROP` -> silently drop (type-1 deny)
+    - `REJECT` -> drop and notify (type-2 deny)
+- rules are based on 5 TCP/IP Header fields
+    - src address
+    - dest address
+    - src port
+    - dest port
+    - protocol (TCP/UDP/ICMP)
+
+#### Stateless vs Stateful
+
+- stateless
+    - packets processed independently of others
+- stateful
+    - remembers previous packets when processing
+    - state is kept in a state table
+- dynamic
+    - rules change on the fly
 
 ## Proxy Firewalls and Firewall Architectures
 
+- two properties desired
+    - transparency
+    - performance
+
+#### Circuit-Level
+
+- checks TCP 3-way handshake, not packets themselves
+    - syn
+    - syn-ack
+    - ack
+- most common implementation
+    - client-side library and proxy server daemon `sockd`
+    - client-daemon network protocol called `SOCKS`
+
+#### Application-Level
+
+- firewall establishes a connection on your behalf and inspects incoming data packet
+- can block packets entirely or even alter packet payloads
+- requires detailed knowledge of specific application-level protocols
+
+#### Internal Firewalls
+
+- gateways between internal subnets
+- bastion hosts
+    - defensive host exposed to a hostile network
+- dual-homed host
+    - two network interfaces
+    - one address per interface
+    - can be suitable for a circuit-level proxy
+
+#### Enterprise Firewall Architectures
+
+- screening router (router with packet filtering) + a bastion host
+- another strategy uses a perimeter network (network DMZ), a subnet between internal and external network
+- another possibility: bastion host in the DMZ between two screening routers (one internal, one external)
+
 ## SSH
 
+- secure shell
+    - does not provide a shell itself
+    - provides an encrypted tunnel to *get to a shell* (or another application)
+- before SSH, we sent cleartext over the network -> this is *bad*
+
+#### Three Protocols -> Three Layers
+
+- transport layer protocol
+    - encrypts and provides integrity
+    - includes negotiation of crypto parameters and keys
+- user authentication protocol
+    - handles SSH authentication, runs over transport layer protocol
+- connection protocol
+    - single SSH connection for multiple purposes
+    - each instance gets a logical channel
+    - channels support
+        - interactive sessions
+        - connection forwarding
+
+#### Client Authentication
+
+- during transport layer negotiation, server decides which authentication methods it will accept
+    - password
+    - kerberos ticket
+    - client public key
+- for public key login
+    - server receives client public key and signature
+        - verifies the signature relative to session data (incl. ID)
+        - checks that public key is in list of allowed public keys
+
+#### Server Authentication
+
+- in non-enterprise, usually it's TOFU
+    - if the key we choose to trust is okay, we're all good
+    - otherwise, we have connected to a middle person
+    - generally this gamble is acceptable if we have no backing PKI
+- to make TOFU better, we can cross-check the host's fingerprint hash against one obtained in an out of band channel
+- PKI support is the best, two options
+    - client database of SSH keys
+    - CA-certified SSH keys
+
+#### SSH Tunnel
+
+- `-L localport:host:hostport remotehost`
+    - listen on local machine at port `localport`
+    - forward it to `host:hostport` from `remotehost`
+- `-R` same thing but backwards (remote to local instead of local to remote)
+
 ## VPNs and Encrypted Tunnels
+
+#### Tunneling
+
+- data stream on one protocol travels inside another
+- encapsulation
+- not necessarily a higher level protocol, encapsulating a lower level
+- two technologies often used
+    - ssh -> lightweight
+    - IPsec -> heavier
+
+#### VPN
+
+- physical private network
+    - accessed only by trusted users
+    - physical isolation, access control, firewalls/gateways
+- VPN is a private network created via encrypted tunnels and special protocols
+
+#### Site-to-Site VPNs
+
+- bridge private networks across a public channel
+
+#### Remote Access VPNs
+
+- authorized clients remote access to a private network
+- experience is transparent to physically located
 
 
 
@@ -1252,43 +1433,118 @@ If somebody would like to make a PR to add it, that would surely be appreciated.
 
 ## Response Types: Detection vs Prevention
 
-#### Alarms (Detection Only)
-
-#### Intrusion Prevention Systems
+- Intrusion Detection System
+    - detect intrusions and issue an alarm
+    - for example, to a sysadmin
+- Intrusion Prevention System
+    - take active steps to prevent the attack
+    - this is not always possible, depends on design, locality, and other limitations
+    - e.g., external sensors in a NIDS may not be able to respond in time since they have to copy traffic
 
 ## Architecture: Host-Based vs Network-Based
 
 #### Host Based
 
+- collect event data on a local machine
+- can be used cooperatively across multiple machines on a network
+- checking network events on a local machine is still host-based, not network-based
+
 #### Network Based
+
+- collect events on a network
+- for example, on a specialized gateway device
 
 ## Event Outcomes
 
 #### False Positives
 
+- when an IDS mistakenly flags a valid event as invalid
+
 #### False Negatives
+
+- when an IDS mistakenly flags an invalid event as valid
 
 #### True Positives
 
+- when an IDS correctly identifies an invalid event
+
 #### True Negatives
 
+- when an IDS correctly identifies a valid event
+
 #### Base Rates and FPR/FNR Trade-Off
+
+- base rates
+    - if the base rate of incidents is low, very low FPR might produce a lot of false positive in practice
+    - people tend to ignore this when thinking about FPR and FNR -> it's a logical fallacy
+    - base rate fallacy -> ignore base rate when calculating conditional probabilities
+- trade-off between FPR and FNR
+    - hard to get both low FPR and FNR
+    - IDS systems generally have to make compromised based on use case and desired level of cautiousness
 
 ## Methodologies: Anomalies vs Signatures vs Specifications
 
 #### Blacklisting vs Whitelisting
 
+- blacklisting
+    - specifying disallowed behavior and flagging matches
+- whitelisting
+    - specifying allowed behavior and flagging mismatches
+
 #### Anomaly Detection
+
+- learned profiles used to generate white lists
+- alarm when an event deviates from normal
 
 #### Signatures
 
+- expert-defined blacklist
+- alarm when behavior matches blacklist
+
 #### Specifications
+
+- expert-defined whitelist
+- alarm when behavior does not match whitelist
 
 ## Sniffers, Reconnaissance Scanners, Vulnerability Scanners
 
+- these all have both white-hat and black-hat uses
+
+#### Sniffers
+
+#### Reconnaissance Scanners
+
+#### Vulnerability Scanners
+
 ## DoS Attacks
 
+- DoS attacks either:
+    - exploit implementation flaws
+    - or exhaust resources by overwhelming
+
+#### Local vs Remote
+
+- local
+    - not necessarily network-based
+    - malware the consumes a lot of resources
+    - overflow in a kernel function
+- remote
+    - poison packets (malformed packets that trigger implementation errors)
+    - send false source IP addresses to defeat simple anti-flooding mechanisms
+    - ICMP flooding (spamming pings -> ICMP echo requests)
+    - UDP flooding (bombard random ports with UDP packets, many of these ports may be closed)
+
+#### DDoS
+
+- distributed denial of service
+    - DoS attack from many machines flooding packets to a network
+    - botnets are often used for this
+
 ## Address Resolution Attacks
+
+#### DNS Attacks (Pharming)
+
+#### ARP Spoofing Attacks
 
 
 

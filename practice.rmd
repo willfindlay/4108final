@@ -672,9 +672,181 @@ Is this a good thing or a bad thing?}
 
 # Authentication Protocols and Key Establishment
 
+## Unilateral vs Mutual Authentication
 
+- unilateral
+    - one party authenticates to another
+- mutual
+    - both parties authenticate to each other
 
+## Key Establishment
 
+- both parties reach an agreement of a secret key to use for a session
+- two subcases
+    - key transport
+    - key agreement
+- in key transport, one party decides the secret key and relays it to the other
+- in key agreement, both parties contribute to deciding on the secret key
+
+#### DH Key Agreement
+
+- take a large prime $p$ and a generator $g$ in that group
+    - can also be done with elliptic curves instead
+- Alice sends $g^a \bmod p$ and Bob sends $g^b \bmod p$
+- they construct the same shared secret $g^{ab} \bmod p$
+- Eve can't reconstruct the secret using $g^a$ and $g^b$ because of:
+    - discrete log problem
+    - computational diffie hellman problem
+    - decisional diffie hellman problem
+
+#### Problems With DH
+
+- weak to man in the middle attack
+    - person in the middle performs DH with Alice and DH with Bob
+    - Eve relays messages from Alice to Bob and vice versa, but can inspect them in the mean time
+    - Alice and Bob think they are talking to each other
+- how to fix this?
+    - authenticated diffie hellman (for example with RSA, etc.)
+
+#### Problems With Key Transport
+
+- when we use key transport instead of key agreement, we rely wholly on long term keys
+- when these long-term keys are compromised, all future sessions are compromised
+- key agreement is better because we can incorporate more depth into determining session keys
+
+#### Ephemeral Keys
+
+- key data only persists during a sessions, disappears after
+- important so that we don't provide verifiable means of reconstructing the key
+- also, a compromised key now only compromises the session
+
+#### Authentication-Only Protocols
+
+- we only authenticate, and don't bother with session keys
+- these protocols see use in limited contexts
+- an example is authentication when using a bank card -> we don't need to establish a session key here
+
+#### Unauthenticated Key Establishment
+
+- things like textbook DH Key Agreement
+    - no authentication takes place, parties still establish a shared secret
+    - secret is the ephemeral session key
+- these protocols are weak to man in the middle attacks
+
+#### Authenticated Key Establishment
+
+- a way of pursuing key establishment and authentication in one protocol
+    - using separate protocols and trivially gluing them together ends badly
+- we can use symmetric key systems, public key systems, or some combination
+    - there are many pitfalls and challenges here though, particularly when connecting for the first time
+
+#### Initial Keying Material
+
+- usually shared via out of band means
+    - either an alternate secure channel prior
+    - pre-shared secret
+    - or using independent cryptographic mechanisms
+
+#### Strong Secrets vs Weak Secrets
+
+- perfectly random secrets are strong / crypto-strength
+- deterministic secrets (e.g., from hashing as password) are weak secrets
+
+## Attacks on Authentication Protocols
+
+#### Replay Attack
+
+#### Dictionary Attack on Weak Secret
+
+#### Reflection Attack
+
+#### Relay Attack
+
+#### Time-Variant Parameters
+
+- attempts to defeat the relay attacks, replay attacks, reflection attacks
+- introduce parameters that are time-sensitive
+    - timestamps
+    - random numbers
+    - sequence numbers
+- these parameters should expire before attacks have a chance to occur
+
+## Authenticated DH
+
+#### Small Subgroup Attacks
+
+- an attacker who substitutes small values for $g^a$ and $g^b$ forces key space to be extremely small
+- we can counter this by limiting the range of potential $g^a$ and $g^b$ (both high and low since we are working in modular arithmetic)
+    - these checks are easy, but essential
+
+#### Middle Person Attacks
+
+- Alice wants to talk to Bob
+- Eve pretends to be Alice to Bob, Bob to Alice
+    - Alice performs DH with Eve, Bob performs DH with Eve
+    - they think they performed DH with each other
+- now Eve has a session key for Alice and a session key for Bob and relays messages
+- she can inspect/modify/change messages
+
+#### Proof of Knowledge vs Relay Attack
+
+- just proving knowledge is not enough to authenticate DH vs a middle person
+- middle person could simply ask Bob for his secret and send that along to Alice
+
+#### STS Protocol
+
+- this turns DH into authenticated DH
+- use digital signatures to authenticate DH
+    - e.g. RSA, ElGamal, DSS
+
+## Key Authentication Goals
+
+#### Forward Secrecy
+
+- exposing long term secret should not jeopardize future session keys
+
+#### Known-Key Security
+
+- exposing long term secret should not reveal past session keys
+
+#### Liveness
+
+- entity authentication ensures that a participating entity is active at the current moment
+- provides a liveness property not present in store-and-forward like email
+- key-use confirmation
+    - one party has evidence that another has the correct session key
+    - the other party sends an explicit demonstration of knowledge using that key
+
+#### Implicit vs Explicit Authentication
+
+- implicit
+    - Alice sends authentication to Bob and assumes Bob has received it
+    - narrow possession down to Bob, but don't confirm it
+- explicit
+    - Alice sends authentication to Bob and requires an explicit response to confirm that it was received
+    - narrow possession down to Bob and confirm it
+
+## Password Authenticated Key Exchange
+
+- passwords are weak secrets
+    - these protocols have to be designed carefully to avoid leaking information
+- protocol information may provide verifiable text to an attacker
+    - this is bad
+    - protocols must be carefully designed to avoid this
+
+#### EKE
+
+- encrypted key exchange
+
+#### DH-EKE
+
+- DH where $g^a$ and $g^b$ are encrypted with a weak secret
+- vulnerable to partition attacks unless we choose very large $p$
+
+#### SPEKE
+
+- do DH as normal, except keep $g$ a secret by creating it using $H(w)^2$
+- they will only have the same value if they use the same weak secret
 
 
 

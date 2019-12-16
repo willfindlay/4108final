@@ -756,11 +756,23 @@ Is this a good thing or a bad thing?}
 
 #### Replay Attack
 
+- capture and replay a hashed secret without knowing the secret
+- use it to impersonate someone if authenticating with a weak secret
+
 #### Dictionary Attack on Weak Secret
+
+- use a dictionary to make educated guesses about a weak secret
+- hash lookup tables on this dictionary
+- verifiable text allows offline guessing attacks to recover a weak secret $w$
 
 #### Reflection Attack
 
+- **unsure about this one**
+
 #### Relay Attack
+
+- capture signal in one place, relay it in real time to another place
+- defend this with tight bounds for time variant parameters
 
 #### Time-Variant Parameters
 

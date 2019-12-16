@@ -1104,23 +1104,132 @@ If somebody would like to make a PR to add it, that would surely be appreciated.
 
 ## DOM Objects
 
-## Same-Origin Policy
+- `location` -> sent by server in HTTP header
+- `domain` ->  origin server can increase cookie's scope
+- `document.domain` -> hostname that document was loaded from
+- `window.location.href` -> URL of requested document; modify to redirect
 
 ## HTTP Cookies
 
+- HTTP is stateless
+- cookies allow persistent state
+    - by default, persist over a session (in browser memory)
+- multiple cookies can be set by an origin server using headers
+    - these cookies are returned from the origin server on later visits
+- cookie attributes
+    1. max-age/expires -> max age in seconds or expiration data of the cookie
+    1. domain -> set scope of cookie to a higher level domain but not TLD
+    1. path -> which origin server pages a cookie is returned to
+    1. secure -> if specified, use HTTPS (over TLS) instead of HTTP
+    1. httponly -> only HTTP can access, no javascript / DOM API access
+
+## Same-Origin Policy
+
+- isolates documents
+- document from one origin should not be able to interfere with or manipulate a document from another origin
+- prevent javascript from being used by a malicious page to redirect to a sensitive page and access or modify data
+    - recall from the assignment
+
+#### SOP Rules
+
+1. assign an origin to a document based on URL
+1. scripts and images are assigned an origin based on who loaded them (not who they are retrieved from)
+1. scripts may only access content whose origin is the same as their own
+
+#### Problems
+
+- goals are hard to capture precisely
+- difficult to enforce
+
+#### How to Identify an Origin
+
+- based on a 3-tuple of information
+    1. scheme
+    1. host
+    1. port
+- content from distinct origins needs to be in new frames or windows
+    - `<iframe src="url">`
+    - `window.open("url")`
+
+#### Relaxing SOP
+
+- developers can change `document.domain` to classify domains sharing the same suffix as belonging to the same origin
+- this is bad from a security perspective
+
+#### How Things Are Different For Cookies
+
+- cookies use different attributes for origin identification
+    - they no longer use port
+    - they use `secure` and `httponly` in place of `scheme`
+
 ## Authentication Cookies
+
+- server stores session ID in a cookie
+- user logs in once, and cookie authenticates them next time they visit the site for the duration of the session
+- server may specify a session expiration time
+- persistent cookies may extend authentication beyond the lifespan of the browser window
+
+#### Cookie Theft
+
+- javascript, proxies, client-side malware, physical/manual filesystem access
+    - steal cookie, use to authenticate as the victim
+- session hijacking (not the same thing as TCP session hijacking)
+- defense against javascript is to set `httponly` in the cookie
+    - this does not work against the other attacks
+
+#### Cookie Protection
+
+- the server should encrypt and either MAC or sign the cookie to provide data integrity and data origin authentication
+- server will then decrypt and verify the cookie when it comes back
 
 ## CSRF
 
+- cross site request forgery
+
 ## XSS
+
+- cross site scripting
+- insert HTML script tags that cause malicious javascript to be executed
 
 #### XSS-Stored
 
+- when the page is rendered based on content stored on the server
+- e.g. a comments section
+- loaded persistently whenever a user accesses the site
+
 #### XSS-Reflected
+
+- exploit parameterized script to insert XSS
+- e.g. a file not found error message that pops up based on requested path
+    - change requested path to a script tag
+
+#### Possible Impacts
+
+- cookie theft
+- redirection to malicious site
+- altering the contents of the site
+- seizure of browser control
 
 ## SQL Injection
 
+- common tricks
+    - terminate quotes early by adding a quote of your own
+    - terminate a statement by adding a `;` (works well after integers)
+    - insert a comment with `--` to eliminate query checks
+    - insert `OR` that always resolves to true followed by `--`
+
 ## Sanitization
+
+- used to defeat XSS, SQL injection
+    - this is a lot harder than just sanitizing `<script>`, `;`, `"`, etc.
+    - there are a lot of factors to consider
+    - for example, evasive encoding is a problem that may not seem obvious at first
+
+#### For SQL Specifically
+
+    - adjust input to remove bad characters
+    - blacklisting known-bad input
+    - only allowing known-good input (whitelisting)
 
 
 

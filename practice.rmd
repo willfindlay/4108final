@@ -108,7 +108,7 @@ library(lubridate)
 \question{Describe the difference between a {\itshape trusted} and {\itshape trustworthy} actor.}
 \vspace{4em}
 
-\question{Compare and contrast {\itshape privacy}, {\itshape protection}, and {\itshape anonymity}.}
+\question{Compare and contrast {\itshape privacy}, {\itshape confidentiality}, and {\itshape anonymity}.}
 \vspace{8em}
 
 \question{Come up with a simple example of a security policy for a house and describe a way it might be violated.}

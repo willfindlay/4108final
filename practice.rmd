@@ -1014,7 +1014,7 @@ Is this a good thing or a bad thing?}
 
 - secret questions/answers
 - this is generally terrible
-    - space of possible answers is way to small
+    - space of possible answers is way too small
     - answers often based on easily verifiable information about a person's real life
 - making nonsense answers to counter this reduces usability
 - potential for more than one right answer, user has a hard time remembering which

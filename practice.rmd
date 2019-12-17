@@ -652,15 +652,55 @@ Is this a good thing or a bad thing?}
 
 ## Security Goals
 
+- confidentiality
+    - data is kept private
+- integrity
+    - data, resources, machines are not changed unless desired
+- authentication
+    - identify an actor that asserts its identity
+- authorization
+    - whether an actor has permission to do something
+- availability
+    - keep resources available for legitimate actors
+- accountability
+    - actors are accountable for their past actions
+    - non-repudiation
+
 ## Policies and Attacks
+
+#### Security Policy
+
+- define exactly what it means for your system to be in a secure state
+- actions violating this policy put system into an insecure state
+- defining policy can be hard in practice
+    - relies on matches between attack model, system model, risk, and reality
+
+#### Threats and Attacks
+
+- a threat is a potential to cause security violations
+- threat agents activate into attackers by using attack vectors that target vulnerabilities in a target asset
 
 ## Risk Assessment and Management
 
+- difficult to assess risk
+- especially for intangible assets like reputations
+
 #### Risk Equations
+
+- $R = T \times V \times C = PC$
+    - threat times vulnerability times cost of a violation
+    - threat and vulnerability can be combined into probability of a violation
 
 #### Expected Loss
 
+- average loss expectancy is the sum of all event frequencies times the cost of those events
+
 #### Cost-Benefit Analysis
+
+- need to analyze the benefits of enacting a security policy with opportunity cost
+- for example, it may be more practical just to let the vulnerability remain if the risk is low
+- this is not always easy
+    - barriers to risk assessment
 
 #### Risk Assessment Challenges
 
@@ -673,18 +713,50 @@ Is this a good thing or a bad thing?}
 
 #### Attributes
 
+- objectives
+- methods
+- capabilities
+- funding
+- outsider vs insider
+
 #### Schemas
+
+- categorical
+    - named groups of adversaries, often ranked by severity
+- capability-level
+    - ranked adversaries based on capability and intent
 
 #### Pen Testing
 
-- blackbox
-- whitebox
+- formal security evaluation process (as opposed to pen testing self assessment)
+    - this can be long / costly procedure
+    - requires experts
+    - not easy to say exactly what is and isn't sure (security is a negative goal, we want to prevent violations)
+- with prior permission, companies / users attempt to find and exploit vulnerabilities to see what damage can be done
+- traditionally blackbox
+    - penetration is done with no knowledge of underlying system
+- can also be whitebox
+    - assume knowledge of underlying system (increases the chances of finding vulnerabilities, but perhaps a less realistic model)
 
-## Thread Modeling
+## Threat Modeling
+
+- identifies threats, threat agents, and attack vectors in a system
+- includes adversary modelling
 
 #### Diagrams
 
+- architectural representation of the system
+- identify and mark system gateways
+- establish trust domains
+- data flow diagram, considering user workflow and lifecycles
+- highlight where sensitive data/information is stored
+
 #### Trees
+
+- start at the root (the attack goal)
+- work backwards
+- the path to an attack goal in the tree is the attack vector
+- diagram may vary based on adversarial model
 
 #### Checklists / STRIDE
 

@@ -1348,7 +1348,7 @@ which gives them verifiable text to guess $w$
 - denoted with an `s` in the character permission model on top of the execute bit for user and group
     - if we don't have execute permissions, we still can't run it though
 
-#### Real, Effected, Saved `uid` and `gid`
+#### Real, Effective, Saved `uid` and `gid`
 
 - `ruid`, `rgid`
     - the actual uid and gid of the user

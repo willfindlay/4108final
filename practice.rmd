@@ -505,7 +505,147 @@ Clearly define where your $t$ is located with a straight line.}
 
 # Authentication Protocols and Key Establishment
 
+\question{Define what an Entity authentication is?}
+\vspace{8em}
+
+\question{What is the difference between the claimant and the verifier?}
+\vspace{8em}
+
+\question{What is the difference between key transport and key agreement?}
+\vspace{8em}
+
+\question{What is an ephemeral key?}
+\vspace{8em}
+
+\question{What is the difference between authentication only and unauthenticated key establishment?}
+\vspace{8em}
+
+\question{Define authenticated key establishment.}
+\vspace{8em}
+
+\question{In an initial keying what is the registration phase?}
+\vspace{8em}
+
+\question{What is the difference between weak secret and strong secret?}
+\vspace{8em}
+
+\question{Describe the difference between a key distribution center (KDC) and a key translation center (KTC).}
+\vspace{8em}
+
+\question{Alice wants to provide a proof of knowledge to Bob. Alice sends H(s) (Hash of the secret s) to Bob. Define an attack so Eve who is listening in can provided a proof of knowledge to Bob.}
+\vspace{8em}
+
+\question{Give an example of a replay attack.}
+\vspace{8em}
+
+\question{Give an example of a reflection attack.}
+\vspace{8em}
+
+\question{Give an example of a relay attack.}
+\vspace{8em}
+
+\question{Give an example of a interleaving attack.}
+\vspace{8em}
+
+\question{Give an example of a middle-person attack.}
+\vspace{8em}
+
+\question{Give an example of a dictionary attack.}
+\vspace{8em}
+
+\question{Give an example of a forward search attack.	Give an example of a pre-capture attack.}
+\vspace{8em}
+
+\question{Give an example of when you should use a random number, sequence number, and a timestamp.}
+\vspace{8em}
+
+\question{What is the discrete log problem regarding Diffie Helman key exchange?	Describe what a small sub-group attack is.}
+\vspace{8em}
+
+\question{What are some properties a good key may have?}
+\vspace{8em}
+
+\question{What is forward secrecy?}
+\vspace{8em}
+
+\question{What is an ephemeral key?}
+\vspace{8em}
+
+\question{What is known key secrecy?}
+\vspace{8em}
+
+\question{What does Password-authenticated key exchange (PAKE) do?}
+\vspace{8em}
+
+\question{PAKE uses a key derivation function (KDF) to generate a symmetric key. Describe how you may recover the key.}
+\vspace{8em}
+
+Using DH (Diffie Helman) how can you add authentication to mitigate the risk of a man in the middle attack.}
+\vspace{8em}
+
+\question{Summarize the technical details of the following password-authenticated key exchange alternatives to EKE and SPEKE.
+SRP/Secure Remote Password (hint: [49, 48]).
+OKE/Open Key Exchange (hint: [30], but also [31] or [9, Chapter 7]).
+J-PAKE/PAKE by Juggling (hint: [21, 22, 20]).}
+\vspace{8em}
+
+
+\question{How could we perform a forward search attack against a public key system?}
+\vspace{8em}
+\question{How can recognizable formats reduce the key space required to decrypt a message.}
+\vspace{8em}
+
+
+\question{What is a single sign on (SSO) architecture?}
+\vspace{8em}
+
+\question{What is a single credential system? Do you need to re login when using services?}
+\vspace{8em}
+
+\question{What dies an IdP do (identity provider).}
+\vspace{8em}
+
+\question{What is an authenticator?}
+\vspace{8em}
+
+\question{Explain the different types of SSO systems. Credential manager (CM), Enterprise SSO, Federal identity (FI).}
+\vspace{8em}
+
+\question{Does the Kerberos protocol provide mutual entity authentication and authenticated key establishment?}
+\vspace{8em}
+
+\question{Explain how the Kerberos protocol works.}
+\vspace{8em}
+
+
 # Operating Systems Security and Access Control
+
+\question{Why is Multics our focus of study when looking at OS security?}
+\vspace{4em}
+
+\question{What significance does timesharing computing have with security?}
+\vspace{4em}
+
+\question{What are some goals in OS security we would like to strive for?}
+\vspace{4em}
+
+\question{What are some goals in OS security we would like to strive for?}
+\vspace{4em}
+
+\question{What does the privileged bit set grant a user?}
+\vspace{4em}
+
+\question{Explain the given components of a memory protection scheme. Descriptor register, Privileged bit, and Supervisor.}
+\vspace{4em}
+
+\question{What is a limitation to the supervisor model of memory protection? }
+\vspace{4em}
+
+\question{What is the difference between a descriptor segment and segment descriptors? }
+\vspace{4em}
+
+\question{What is an access control indicator?}
+\vspace{4em}
 
 # Software Security -- Privilege and Escalation
 

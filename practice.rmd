@@ -637,6 +637,8 @@ Is this a good thing or a bad thing?}
 
 # Web and Browser Security
 
+[Click here for questions.](https://docs.google.com/document/d/1YxZkIYCljN2ZbnSn7XkBNYYeZhwrYiAVXz9pTs-9G4k/edit)
+
 # Firewalls and Tunnels
 
 # Intrusion Detection and Network-Based Attacks
@@ -648,7 +650,50 @@ Is this a good thing or a bad thing?}
 
 # Basic Concepts and Principles
 
+## Security Goals
 
+## Policies and Attacks
+
+## Risk Assessment and Management
+
+#### Risk Equations
+
+#### Expected Loss
+
+#### Cost-Benefit Analysis
+
+#### Risk Assessment Challenges
+
+- model-reality gaps
+- rapidly evolving technology -> changing vulnerabilities, adversarial capabilities
+- incomplete picture of what adversaries are and what they can do
+- difficulty of quantifying the value of intangible assets
+
+## Adversary Modeling
+
+#### Attributes
+
+#### Schemas
+
+#### Pen Testing
+
+- blackbox
+- whitebox
+
+## Thread Modeling
+
+#### Diagrams
+
+#### Trees
+
+#### Checklists / STRIDE
+
+- S: spoofing
+- T: tampering
+- R: repudiation
+- I: information disclosure
+- D: denial of service
+- E: escalation of privilege
 
 
 
@@ -656,7 +701,17 @@ Is this a good thing or a bad thing?}
 
 # Cryptographic Building Blocks
 
+## Symmetric-Key Crypto
 
+## Public-Key Crypto
+
+## Digital Signatures
+
+## Cryptographic Hashes
+
+#### Properties of Crypto Hashes
+
+## MACs
 
 
 
@@ -664,8 +719,75 @@ Is this a good thing or a bad thing?}
 
 # User Authentication
 
+## Storing Hashes vs Cleartext
 
+## Targeted vs Trawling Scope Attacks
 
+## Approaches to Defeat Passwords
+
+#### Offline Guessing
+
+#### Online Guessing
+
+#### Password Capture
+
+#### Defeat Password Recovery Mechanisms
+
+#### Password Interface Bypass
+
+## Password Composition Policies and Strength
+
+#### Ineffectiveness of Policies
+
+#### Usability / Security Trade-off
+
+#### Probability of Guessing a Password
+
+#### Enforcing Password Blacklists
+
+## Password Guessing Defenses
+
+#### Rate Limiting
+
+#### Iterated Hashing
+
+#### Salting and Peppering
+
+#### System-Assigned Passwords
+
+## Password Recovery
+
+#### Recovery Links
+
+#### One-Time Passwords
+
+#### Codes Sent to Cellphone
+
+#### Question-Based Recovery
+
+## OTP Generators and Hardware Tokens
+
+#### Mobile OTPs
+
+#### SIM Swap Attack
+
+#### Lamport Hash Chains for OTPs
+
+#### Hardware Tokens
+
+#### Multiple Factors
+
+## Biometric Authentication
+
+#### Modalities: Physical, Behavioral, Mixed
+
+#### Enrollment and Verification
+
+#### FAR, FRR, EER
+
+#### FTE, FTC
+
+#### Fallback Mechanisms
 
 
 

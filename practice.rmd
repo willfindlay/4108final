@@ -1197,7 +1197,8 @@ which gives them verifiable text to guess $w$
 
 #### Reflection Attack
 
-- **unsure about this one**
+- capture a value and replay it to the originating party
+- like replay attack except send it back instead of sending it to someone else
 
 #### Relay Attack
 
@@ -1212,6 +1213,22 @@ which gives them verifiable text to guess $w$
     - random numbers
     - sequence numbers
 - these parameters should expire before attacks have a chance to occur
+
+#### Middle-Person
+
+- act as a proxy between two end parties
+
+#### Interleaving
+
+- weaving together messages from two distinct protocols
+
+#### Forward Search
+
+- feeding guesses into hash function, seeking matches
+
+#### Pre-Capture
+
+- social engineering to steal client OTP for later use
 
 ## Authenticated DH
 

@@ -326,9 +326,6 @@ Once you have labeled the attack, describe it.}
 
 # Authentication Protocols and Key Establishment
 
-\question{}
-\vspace{4em}
-
 \question{Define what an Entity authentication is?}
 \vspace{8em}
 

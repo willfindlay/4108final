@@ -1950,6 +1950,9 @@ If somebody would like to make a PR to add it, that would surely be appreciated.
 ## CSRF
 
 - cross site request forgery
+- takes advantage of authentication cookies
+- tricks the browser (via a link or XSS or malicious page) into sending a request
+    - this request is pre-authorized due to the authentication cookie
 
 ## XSS
 

@@ -703,15 +703,95 @@ Is this a good thing or a bad thing?}
 
 ## Symmetric-Key Crypto
 
+#### One-Time Pad
+
+- needs key as long as plaintext
+- perfect secrecy
+- ciphertext is malleable
+- not used in practice
+
+#### Stream Ciphers
+
+- encrypt one bit at a time
+- either synchronous or asynchronous
+- rely on cryptographically secure PRNGs
+
+#### Block Ciphers
+
+- all block ciphers have a key size and block length
+    - require modes of operation to encrypt plaintext longer than block length
+- AES is the best one at the moment
+    - DES, 2DES, 3DES used to be where it was at, but each one was broken
+
+#### Block Cipher Modes
+
+- ECB
+    - encrypt one block at a time, and just plunk them together
+    - this is fast and can be parallelized but....
+    - this sucks, don't use it
+    - it has no semantic security
+- CBC
+    - block chaining
+    - start with an IV and XOR with first plaintext block
+    - encrypt that to get first ciphertext
+    - then use previous ciphertext as IV for next block and so on
+- CTR
+    - start with a nonce, increment the nonce eat time
+    - at each step, run that nonce through the block cipher
+    - then XOR the output with plaintext block to get ciphrtext
+    - CTR mode technically works like a stream cipher (no padding needed!)
+
 ## Public-Key Crypto
+
+- generate public, private key pair
+    - encrypt with their public key, they decrypt with their private key
+
+#### Key Distribution and Hybrid Encryption
+
+- public key crypto often used for key distribution of a symmetric key
+    - this allows us to establish an ephemeral session key for symmetric encryption
 
 ## Digital Signatures
 
+- generate public, private key pair
+- you sign with your private key, they verify with your public key
+- your public key must not be changed by an adversary
+    - need integrity and authenticity
+- generally we run the algorithm on a hash of the message instead of the message itself
+- this provides
+    - data integrity for anyone
+    - data origin authentication for anyone (assuming nobody has replaced your public key)
+    - non-repudiation (assuming nobody has stolen your private key)
+        - MACs don't provide this one like digital signatures do
+
 ## Cryptographic Hashes
+
+- easy to compute
+- provide compression (output is always same length)
 
 #### Properties of Crypto Hashes
 
+- preimage resistance
+    - hard to find $m$ given $H(m)$
+- second preimage resistance
+    - given $m, H(m)$, hard to find $m' \ne m$ such that $H(m) = H(m')$
+- collision resistance
+    - hard to find any pair $m' \ne m$ such that $H(m) = H(m')$
+    - implies the other two
+
+#### What They're Good for on Their Own
+
+- on its own, a crypto hash can provide data integrity
+- we can use them as primitive to help build MACs and digital signature schemes
+
 ## MACs
+
+- message authentication code
+- generally a keyed hash function (HMAC)
+- CBC-MAC is also a thing
+    - use last block of CBC ciphertext
+    - unless we use EMAC, this is vulnerable if we allow variable length messages
+- HMAC with a good hash function is generally the standard here
 
 
 

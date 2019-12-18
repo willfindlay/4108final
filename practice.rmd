@@ -1553,6 +1553,29 @@ which gives them verifiable text to guess $w$
 
 ## Role-Based Access Control / Mandatory Access Control
 
+#### RBAC
+
+- role-based access control
+- subjects have one or more roles
+- permissions are based on roles
+
+#### MAC
+
+- mandatory access control
+- system administrator decides who has access to objects
+- this is not modifiable at runtime
+
+
+#### DAC
+
+- discretionary access control
+- object owners (subjects who own objects) decide who has access to their objects
+- this is commodity OS model
+    - Linux
+    - MacOS (although MacOS has elements of MAC)
+    - Windows
+    - etc.
+
 
 
 
